@@ -1,4 +1,4 @@
-@extends('template')
+@extends('templateLogin')
 @section('titulo','Logado')
 @section('conteudo')
         <nav id="menu">
@@ -9,6 +9,6 @@
             </ul>
         </nav>
         <section id="conteudo_principal">
-           <p>Logado com sucesso</p>
+           <p>{{session('nome')}} Logado com sucesso</p>
         </section>
 @endsection

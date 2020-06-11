@@ -21,14 +21,17 @@ Route::group(['prefix' => 'cadastro'], function () {
     Route::post('/cadastra', 'CadastroController@cadastra')->name('cadastra');
     Route::get('/cadastrado', 'CadastroController@cadastrado')->name('cadastrado');
 });
-Route::group(['prefix' => 'login'], function () {
-    Route::get('/', 'LoginController@login')->name('login');
-    Route::post('/logar', 'LoginController@logar')->name('logar');
-    Route::get('/logado', 'LoginController@logado')->name('logado');
-});
 Route::group(['prefix' => 'cardapio'], function () {
     Route::get('/', 'CardapioController@cardapio')->name('cardapio');
 });
 Route::group(['prefix' => 'promocao'], function () {
     Route::get('/', 'PromocaoController@promocao')->name('promocao');
+}); 
+Route::group(['prefix' => 'login'], function () {
+    Route::get('/', 'LoginController@login')->name('login');
+    Route::post('/logar', 'LoginController@logar')->name('logar');
+    Route::group(['middleware' => ['login']], function () {
+        Route::get('/logout', 'LoginController@logout')-> name('logout');
+        Route::get('/logado', 'LoginController@logado')->name('logado');
+    });
 });
