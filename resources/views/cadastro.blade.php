@@ -49,8 +49,8 @@
                         <label for="senha">Senha </label><br>
                         <input type="password" name="senha" id="senha" placeholder="Criar senha" required maxlength="15"><br>
                         
-                        <label for="comfsenha">Confirmar Senha</label><br>
-                        <input type="password" name="comfsenha" id="comfsenha" placeholder="Confirmar senha" required maxlength="15"><br>
+                        <label for="confsenha">Confirmar Senha</label><br>
+                        <input type="password" name="confsenha" id="confsenha" placeholder="Confirmar senha" required maxlength="15"><br>
                         
                     </div>
 

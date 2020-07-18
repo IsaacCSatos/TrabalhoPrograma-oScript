@@ -8,6 +8,10 @@ class HomeController extends Controller
 {
     //
     public function home(){
-        return view('index');
+        if(session('nome')) {
+            return view('index',['temp' => 'templateLogin']);
+        } else {
+            return view('index',['temp' => 'template']);
+        }
     }
 }

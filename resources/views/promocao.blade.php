@@ -1,4 +1,5 @@
-@extends('template')
+@extends($temp)
+
 @section('titulo','Promoção')
 @section('conteudo')
        <nav id="menu">

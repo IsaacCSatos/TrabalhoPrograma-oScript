@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario;
 
 class LoginController extends Controller
 {
@@ -11,8 +12,15 @@ class LoginController extends Controller
         return view('login');
     }
     public function logar(Request $request){
-        if($request->login == 'teste' && $request->senha == '123456'){
-            session (['nome' => 'Usuario'],['id'=>'10']);
+        $request->validate([
+            'login' => 'required',
+            'senha' => 'required'
+        ]);
+
+        $user = Usuario::where('login', $request->login)->where('senha', md5($request->senha))->first();
+
+        if($user){
+            session (['nome' => $user->nome]);
             return redirect()->route('logado');
         }else{
             return redirect()->back()->with('erro', 'Login ou Senha incorreta');

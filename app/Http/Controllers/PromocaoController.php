@@ -8,6 +8,11 @@ class PromocaoController extends Controller
 {
     //
     public function promocao(){
-        return view('promocao');
+        if(session('nome')) {
+            return view('promocao',['temp' => 'templateLogin']);
+        } else {
+            return view('promocao',['temp' => 'template']);
+        }
+        
     }
 }
